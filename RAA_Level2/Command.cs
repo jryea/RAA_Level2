@@ -88,10 +88,10 @@ namespace RAA_Level2
 
                 foreach (string[] lineData in csvDataList)
                 {
-                    
-
                     // get elevation
+
                     double elevation;
+
                     if (units == "Metric")
                     {
                         double elevationInMeters = double.Parse(lineData[2]);
@@ -111,12 +111,13 @@ namespace RAA_Level2
                         ViewPlan.Create(doc, floorPlanType.Id, level.Id);
                         viewCount++;
                     }
+
+                    // create ceiling plan
                     if (createCeilingPlans == true)
                     {
                         ViewPlan.Create(doc, ceilingPlanType.Id, level.Id);
                         viewCount++;
                     }
-
                 }
                 TaskDialog.Show("Levels and Views Created", $"{levelCount}  levels were created!, {viewCount} plans were created!");
                 t.Commit();

@@ -31,7 +31,9 @@ namespace RAA_Level2
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.InitialDirectory = @"C:\";
+            // openFile.InitialDirectory = @"C:\";
+            openFile.RestoreDirectory = true;
+            openFile.Multiselect = false;    
             openFile.Filter = "csv files (*.csv)|*.csv";
 
             if(openFile.ShowDialog() == true)
@@ -56,12 +58,12 @@ namespace RAA_Level2
             this.Close();
         }
 
-        public string GetTextBoxValue()
+        internal string GetTextBoxValue()
         { 
             return tbxFilePath.Text; 
         }
 
-        public string GetRadioButtonValue()
+        internal string GetRadioButtonValue()
         {
             if (rbImperial.IsChecked == true)
                 return rbImperial.Content.ToString();
@@ -69,7 +71,7 @@ namespace RAA_Level2
                 return rbMetric.Content.ToString();
         }
 
-        public bool GetCheckboxFloorPlans()
+        internal bool GetCheckboxFloorPlans()
         {
             if (chbxFloorPlans.IsChecked == true)
                 return true;
@@ -77,7 +79,7 @@ namespace RAA_Level2
                 return false;
         }
 
-        public bool GetCheckboxCeilingPlans()
+        internal bool GetCheckboxCeilingPlans()
         {
             if (chbxCeilingPlans.IsChecked == true)
                 return true;
